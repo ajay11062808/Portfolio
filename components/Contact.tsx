@@ -39,7 +39,7 @@ export default function Contact() {
         setSubmitStatus('Failed to send message. Please try again.')
       }
     } catch (error) {
-      setSubmitStatus('An error occurred. Please try again later.')
+      setSubmitStatus(`An error occurred: ${(error as Error).message}. Please try again later.`)
     }
 
     setIsSubmitting(false)
