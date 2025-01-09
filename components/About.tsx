@@ -5,8 +5,8 @@ export default function About() {
           <h2 className="text-3xl font-bold mb-8 text-center text-gray-800 dark:text-white">About Me</h2>
           <div className="max-w-3xl mx-auto">
             <p className="text-lg mb-4 text-gray-800 dark:text-white">
-              I&apos;m a full stack developer with X years of experience in building web applications. 
-              My journey in tech started with [Your Background], and I&apos;ve since worked on a variety of projects 
+              I&apos;m a full stack developer with more than 2 years of experience in building web applications. 
+              My journey in tech started with React and Java, and I&apos;ve since worked on a variety of projects 
               ranging from [Types of Projects].
             </p>
             <p className="text-lg mb-4 text-gray-800 dark:text-white">
