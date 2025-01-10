@@ -7,7 +7,7 @@ export default function Hero() {
           <p className="text-xl max-w-2xl mx-auto  text-gray-800 dark:text-white">
             Passionate about creating robust and scalable web applications. 
             Experienced in both frontend and backend technologies.With Devops experience too.
-            Designed Scallable applications with Docker and Kubernetes
+            Designed Scalable applications with Docker and Kubernetes
           </p>
         </div>
       </section>
