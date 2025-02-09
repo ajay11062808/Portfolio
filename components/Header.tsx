@@ -1,33 +1,45 @@
 'use client'
 
-import Link from 'next/link'
-import { useTheme } from 'next-themes'
-import { Moon, Sun } from 'lucide-react'
+import Link from 'next/link';
+import { useTheme } from 'next-themes';
+import { Moon, Sun } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Header() {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme();
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-800 bg-opacity-90 dark:bg-opacity-90 shadow-md">
       <nav className="container mx-auto px-6 py-3">
-        <div className="flex justify-between items-center">
+        <div className="flex ml-30 justify-between items-center">
           <ul className="flex space-x-6">
-            <li><Link href="#home" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-geist-sans">Home</Link></li>
-            <li><Link href="#about" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-geist-sans">About</Link></li>
-            <li><Link href="#skills" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-geist-sans">Skills</Link></li>
-            <li><Link href="#projects" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-geist-sans">Projects</Link></li>
-            <li><Link href="#experience" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-geist-sans">Experience</Link></li>
-            <li><Link href="#contact" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-geist-sans">Contact</Link></li>
+            {['home', 'about', 'skills', 'projects', 'experience', 'contact'].map((section) => (
+              <li key={section}>
+                <Link href={`#${section}`} onClick={(e) => handleScroll(e, section)} className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-geist-sans">
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </Link>
+              </li>
+
+            ))}
           </ul>
-          <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+          <motion.button
+            className="p-2 rounded-full bg-gray-600 dark:bg-gray-600"
+            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
+            {theme === 'dark' ? <Moon /> : <Sun/>}
+          </motion.button>
         </div>
       </nav>
     </header>
-  )
+  );
 }
-
